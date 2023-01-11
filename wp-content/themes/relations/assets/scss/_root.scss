@@ -1,0 +1,10 @@
+:root {
+    @each $color, $shades in $colors {
+        @each $shade, $value in $shades {
+            --#{$color}-#{$shade}: #{$value};
+        }
+    }
+    @each $weight, $value in $fontsWeight {
+        --weight-#{$weight}: #{$value};
+    }
+}

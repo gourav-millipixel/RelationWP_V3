@@ -1,0 +1,59 @@
+$fontSize: 16px;
+$primaryFont: 'Inter Tight', sans-serif;
+$secondFont: 'Roboto', sans-serif;
+$conPad: 2rem;
+$conPadMob: 1.5625rem;
+$radius: 3px;
+$colors: (
+    base: (100: #fff,
+        200: #000,
+        300: #ffffffb3,
+        400: #F0ECFB,
+        500: #DFD6F9),
+    primary: (100: #6846D4,
+        200:#23204B,
+        300:#C9BAF9,
+    ),
+    secondary: (100: #FFD949,
+        200:#F15845,
+        300:#66C695,
+        400:#EDBE0A,
+        500: RGBA(241 88 69 / 16%),
+        600: rgba(102, 198, 149, 0.16),
+    ),
+    gray: (100: #444444,
+        200: #696969,
+        300:#A1A1A1,
+        400: #E7E7E7,
+        500: #F2F2F2,
+        600: #F5F5F5,
+        700:#363636,
+        800:#F9F9F9,
+        900:#898989,
+        1000:#A4A4A4,
+        1100:#292929,
+        1200:#444444,
+        1300:#F8F8F8,
+
+
+    ),
+    pastel: (100:#FEEEEC,
+
+    ),
+
+    gradient:(100:linear-gradient(253.46deg, #795ED7 17.95%, #9635C6 49.96%, #FF701F 116.92%, #FF6712 123.3%),
+        200:linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #fff 80.21%),
+
+    )
+);
+
+$fontsWeight: (
+    extraBold:900,
+    bold:700,
+    medium:500,
+    normal:400,
+    light:300,
+);
+
+$secondary-200: #F15845;
+$base-100: #fff;

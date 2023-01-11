@@ -1,0 +1,11 @@
+@import "./variables";
+@import "./root";
+@import "./mixin";
+@import "./typography";
+@import "./common";
+@import "./header";
+@import "./themeStyle";
+
+
+//go to path first cd wp-content/themes/relations/assets
+// sass --watch scss:css --style compressed

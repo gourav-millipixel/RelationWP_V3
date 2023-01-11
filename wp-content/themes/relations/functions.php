@@ -176,3 +176,77 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));	
+}
+
+
+function faqs_sec(){
+	$faq_section = get_field('faq_section', 'option');
+	$faqs = $faq_section['faqs'];
+	$i = 0;
+	$out = '<div class="row mt-120">'.
+	$out .= '<div class="col-lg-12 text-center"><h1 class="mb-12 gray-span">'.$faq_section['title'].'</h1>';
+	$out .= '<div class="row"><div class="col-lg-6 mx-auto text-center my-4"><p class="pb-2 h4 text-gray-200">'.$faq_section['description'].'</p></div></div></div>';
+	$out .= '<div class="col-lg-8 mx-auto"><div class="accordion planAccordian" id="accordionExample">';
+	foreach( $faqs as $faq ) {
+		$title = $faq['title'];
+		$description = $faq['description'];
+		$i++;
+		$exp = "false"; 
+		$btnClass = "accordion-button collapsed";
+		$clapClass = "accordion-collapse collapse";
+		if($i == 1) {
+			$exp = "true"; 
+			$btnClass = "accordion-button";
+			$clapClass = "accordion-collapse collapse show";
+		}
+		$out .= '<div class="accordion-item"><h2 class="accordion-header" id="heading-'.$i.'">';
+		$out .='<button class="'.$btnClass.'" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-'.$i.'"
+		aria-expanded="'.$exp.'" aria-controls="collapse-'.$i.'"><h5 class="text-base-200 font-bold">'.$title.'</h5></button>';
+		$out .='</h2>';
+		$out .='<div id="collapse-'.$i.'" class="'.$clapClass.'" aria-labelledby="heading-'.$i.'" data-bs-parent="#accordionExample" >';
+		$out .='<div class="accordion-body text-md font-normal text-gray-200">'.$description.'</div>';
+		$out .='</div></div>';
+
+}
+$out .= '</div></div>';
+$out .= '<div class="text-center mt-5">';
+$out .= ' <a href="'.$faq_section['action']['link'].'" class="btn-primary btn-sm">'.$faq_section['action']['title'].'</a>';
+$out .= '</div>';
+$out .= '</div>';
+return $out;
+}
+add_shortcode('faqs', 'faqs_sec');
+
+/**
+ * Generate breadcrumbs
+ * @author CodexWorld
+ * @authorURL www.codexworld.com
+ */
+function get_breadcrumb() {
+    echo '<a href="'.home_url().'" rel="nofollow">Home</a>';
+    if (is_category() || is_single()) {
+        echo "";
+        the_category(' &bull; ');
+            if (is_single()) {
+                echo " ";
+                the_title();
+            }
+    } elseif (is_page()) {
+        echo "";
+        echo the_title();
+    } elseif (is_search()) {
+        echo "Search Results for... ";
+        echo '"<em>';
+        echo the_search_query();
+        echo '</em>"';
+    }
+}
