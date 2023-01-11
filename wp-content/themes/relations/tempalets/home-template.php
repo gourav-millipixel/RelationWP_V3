@@ -17,27 +17,9 @@
             <div class="row mt-3">
                 <div class="col-lg-5">
                     <div class="homeSelectMain">
-                    <?php
-                                $grouptitle =  $banner['select_group']; 
-                                if($grouptitle) : ?>
-                        <div class="relationSelect homeSelect">
-                            <span class="selectStaic">Relations for</span>
-                    
-                            <select class="relationSelectinner"
-                                    onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                                    <?php foreach( $grouptitle as $grouptitle_itm ) :
-                                    $optionslink= $grouptitle_itm['option_link'];
-                                    $options= $grouptitle_itm['select_option']; ?>
-                                    <option value="<?php echo $optionslink; ?>"><?php echo $options; ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
-
-                        </div>
-                        <?php endif ?>
+        
                         <?php if($banner["title"]) : ?>
-                        <div class="row mx-0 bannerHomeTop mb-3 pb-0 mb-lg-5 pb-lg-2" data-aos="fade-up"
-                            data-aos-duration="1000" data-aos-delay="500" data-aos-easing="ease-in-linear">
+                        <div class="row mx-0 bannerHomeTop mb-3 pb-0 mb-lg-5 pb-lg-2">
                             <h1 class="text-base-200 font-normal p-0 gradient-span mb-3"><?php echo $banner["title"]; ?>
                             </h1>
                             <h4 class="p-0"><?php echo $banner["title_small"]; ?>
@@ -61,7 +43,7 @@
                     </div>
                 </div>
                 <div class="col-lg-7">
-                    <div class="homeSlider pb-0" data-aos="fade-up" data-aos-delay="400">
+                    <div class="homeSlider pb-0" >
                         <?php
                                 $best_deal_rep =  $banner['best_deal']; 
                                 if($best_deal_rep) : ?>
@@ -128,6 +110,7 @@
         </div>
     </section>
 
+    <section id="section2" class="section py-lg-4 pt-5 bg-base-500 sbc">
     <?php 
      $sales_lease = get_field('sales_lease');
      if($sales_lease) : 
@@ -135,393 +118,34 @@
 
     <?php $countbox = $sales_lease['count-box']; 
             if($countbox) : ?>
-    <section  class="py-lg-4 pt-5 bg-base-500 sbc">
+    
         <div class="container py-2">
             <div class="row sbcRow text-center text-lg-start">
+            <div class="wraper">
                 <?php
                     foreach( $countbox as $countbox_itm ) :                  
-                        $title = $countbox_itm['title']; 
-                        $description = $countbox_itm['description'];
+                        $title = $countbox_itm['title_dec']; 
+                        $image = $countbox_itm['image']; 
                     ?>
-                <div class="bbl col-lg-3 pb-4 mb-4 pb-lg-0 mb-lg-0">
+                    <?php if($image) : ?>
+                        <div class="item prof-1"><img class="w-100" src="<?php echo $image; ?>" alt="image"></div>
+                    <?php endif; ?>
                     <?php if($title) : ?>
-                    <h4 class="text-gray-100"><?php echo $title; ?></h4>
+                        <div class="info">info<?php echo $title; ?></div>
                     <?php endif; ?>
-
-                    <?php if($description) : ?>
-                    <p class="text-gray-200 p-0 m-0"><?php echo $description; ?></p>
-                    <?php endif; ?>
-                </div>
+             
                 <?php endforeach; ?>
+                </div>
             </div>
         </div>
-    </section>
+    
     <?php endif; ?>
 
     <?php endif; ?>
 
-
-
-    <section id="section2" class="section p-100 seling_buying pb-5">
-        <div class="container">
-            <div class="row pb-4 pb-lg-5">
-                <div class="col-lg-10">
-                    <?php if($seling_buying["section_title"]) : ?>
-                    <h1 class="ps-0 ps-lg-3 gray-span"><?php echo $seling_buying["section_title"]; ?></h1>
-                    <?php endif ?>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <?php if($seling_buying["section_img"]) : ?>
-
-                    <img src="<?php echo $seling_buying["section_img"]; ?>" />
-                    <?php endif ?>
-                </div>
-                <div class="col-lg-4 mb-lg-5 mb-4">
-                    <?php if($seling_buying["imgdetail"]) : ?>
-                    <p class="h4 text-gray-200 mb-5"><?php echo $seling_buying["imgdetail"]; ?></p>
-                    <?php endif ?>
-
-                    <?php if( $seling_buying['action'] ): ?>
-                    <a href="<?php echo $seling_buying['action']['link']; ?>" class="btnIcon btn-primary btn-sm me-2">
-                        <?php echo $seling_buying['action']['text']; ?><svg width="20" height="20" viewBox="0 0 20 20"
-                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M10.3536 17.5245C10.1583 17.7198 9.84171 17.7198 9.64645 17.5245C9.45119 17.3293 9.45119 17.0127 9.64645 16.8174L15.779 10.6848L3.0139 10.6848C2.73776 10.6848 2.5139 10.4609 2.5139 10.1848C2.51391 9.90864 2.73776 9.68478 3.0139 9.68478H15.779L9.64645 3.55216C9.45119 3.3569 9.45119 3.04031 9.64645 2.84505C9.84171 2.64979 10.1583 2.64979 10.3536 2.84505L17.3393 9.83088L17.3396 9.83123C17.3404 9.83194 17.3411 9.83264 17.3418 9.83335C17.3887 9.8808 17.4241 9.93529 17.4482 9.99339C17.4726 10.0523 17.4861 10.117 17.4861 10.1848C17.4861 10.2526 17.4726 10.3172 17.4482 10.3762C17.4238 10.4351 17.3876 10.4904 17.3396 10.5383L10.3536 17.5245Z"
-                                fill="white" />
-                        </svg>
-                    </a>
-                    <?php endif;?>
-                </div>
-            </div>
-        </div>
     </section>
 
-
-    <?php
-    $relationcom_slide = get_field('relationcom_slide'); 
-    if( $relationcom_slide ): 
-    ?>
-    <section id="section3" class="section bestDeals">
-        <div class="container">
-            <?php if($relationcom_slide['title']) : ?>
-            <h1 class="gray-span mb-4 mb-lg-5 ">
-                <?php echo $relationcom_slide['title']; ?>
-            </h1>
-            <?php endif; ?>
-            <div class="bg-base-400 r-24">
-                <div class="row pb-4 pb-lg-0">
-                    <div class="col-lg-8">
-                        <div class="bestDealsSlider pb-5 pb-lg-0">
-                            <?php
-                                $best_deal_rep = $relationcom_slide['best_deal']; 
-                                if($best_deal_rep) : ?>
-                            <?php
-                                foreach( $best_deal_rep as $best_deal_itm ) :
-                                    $title = $best_deal_itm['title']; 
-                                    $description = $best_deal_itm['description']; 
-                                    $action = $best_deal_itm['action']; 
-                                
-                                ?>
-                            <div class="p-4 p-lg-5 pb-lg-0">
-
-                                <div class="bestDealsSliderdetail">
-                                    <?php if($title) : ?>
-                                    <h2 class="gradient-span blockSpan"><?php echo $title; ?></h2>
-                                    <?php endif; ?>
-                                </div>
-                                <div class="pt-3 pb-4 pb-lg-0 pb-206">
-                                    <p class="h4 text-gray-200 pb-4 mb-2"> <?php echo $description; ?></p>
-                                    <?php if($action) : ?>
-                                    <a href="<?php echo $action['link']; ?>"
-                                        class="btnIcon btn-primary btn-sm mt-4 mt-lg-0">
-                                        <?php echo $action['text']; ?><svg width="20" height="20" viewBox="0 0 20 20"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                                d="M10.3536 17.5245C10.1583 17.7198 9.84171 17.7198 9.64645 17.5245C9.45119 17.3293 9.45119 17.0127 9.64645 16.8174L15.779 10.6848L3.0139 10.6848C2.73776 10.6848 2.5139 10.4609 2.5139 10.1848C2.51391 9.90864 2.73776 9.68478 3.0139 9.68478H15.779L9.64645 3.55216C9.45119 3.3569 9.45119 3.04031 9.64645 2.84505C9.84171 2.64979 10.1583 2.64979 10.3536 2.84505L17.3393 9.83088L17.3396 9.83123C17.3404 9.83194 17.3411 9.83264 17.3418 9.83335C17.3887 9.8808 17.4241 9.93529 17.4482 9.99339C17.4726 10.0523 17.4861 10.117 17.4861 10.1848C17.4861 10.2526 17.4726 10.3172 17.4482 10.3762C17.4238 10.4351 17.3876 10.4904 17.3396 10.5383L10.3536 17.5245Z"
-                                                fill="white" />
-                                        </svg>
-
-                                    </a>
-                                    <?php endif;?>
-                                </div>
-
-                            </div>
-                            <?php endforeach; ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="imgAnmi slideBG">
-                            <?php if($relationcom_slide['image']) : ?>
-                            <img src="<?php echo $relationcom_slide['image']; ?>" alt="image">
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-    </section>
-    <?php endif;?>
-
-
-
-    <?php 
-     $centralizedsource = get_field('centralizedsource');
-     if($centralizedsource) : 
-     ?>
-    <section id="section4" class="section p-100 centrSourceSec stickyCardsSec">
-        <!-- <div class="container"> -->
-        <div class="container stickyHead">
-            <div class="row pb-4">
-                <div class="col-lg-12 pb-0 pb-lg-4">
-                    <?php if($centralizedsource["title"]) : ?>
-                    <h1 class="gradient-span"><?php echo $centralizedsource["title"]; ?></h1>
-                    <?php endif ?>
-
-                </div>
-            </div>
-        </div>
-        <?php
-            $cardbox = $centralizedsource['card-box']; 
-            if($cardbox) : 
-        ?>
-        <div class="cardSection stickyCards">
-            <?php
-                $cardcounter = 0;
-                foreach( $cardbox as $cardbox_itm ) :                
-                    $title = $cardbox_itm['title']; 
-                    $description = $cardbox_itm['description'];
-                    $image = $cardbox_itm['image'];
-                    $card_background = $cardbox_itm['card_background']; 
-                    $cardcounter ++;
-            ?>
-            <div class="sticky" id="stickyCard-<?php echo $cardcounter; ?>">
-                <div class="mb-5 ">
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-lg-3">
-                                <h1 class="wbgradient-span countLetter"><span>0<?php echo $cardcounter; ?></span></h1>
-                            </div>
-
-                            <div class="col-lg-4">
-                                <div class="imgCard r-24" style="background-color:<?php echo $card_background; ?>">
-                                    <?php if($image) : ?>
-                                    <img class="w-100" src="<?php echo $image; ?>" alt="image">
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-5">
-
-                                <div class="row">
-									<div class="col-1">
-										&nbsp;
-									</div>
-									<div class="col-11">
-										<?php if($title) : ?>
-                                <h2 class="pb-2 gradient-span"><?php echo $title; ?></h2>
-                                <?php endif; ?>
-                                <?php if($description) : ?>
-                                <p class="m-0 text-gray-200 h4"><?php echo $description; ?></p>
-                                <?php endif; ?>
-									</div>
-								</div>
-                            </div>
-                        </div>
-
-                        <!-- <div class="col-lg-5">
-
-                            <?php if($title) : ?>
-                            <h2 class="pb-2 gradient-span"><?php echo $title; ?></h2>
-                            <?php endif; ?>
-                            <?php if($description) : ?>
-                            <p class="m-0 text-gray-200 h4"><?php echo $description; ?></p>
-                            <?php endif; ?>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
-
-        <?php endif; ?>
-
-    </section>
-
-    <?php endif; ?>
-
-
-    <?php get_template_part( 'components/testimonialsSlider' ); ?>
-
-
-
-    <section id="section5" class="section p-100 pb-0 pb-lg-5">
-
-        <?php 
-     $talk_directly = get_field('talk_directly');
-     if($talk_directly) : 
-     ?>
-        <div class="container pb-5">
-            <div class="row pb-2 pb-lg-4">
-                <div class="col-lg-9">
-                    <?php if($talk_directly["title"]) : ?>
-                    <h1 class="pb-3 gray-span"><?php echo $talk_directly["title"]; ?></h1>
-                    <?php endif ?>
-                </div>
-            </div>
-            <?php
-                $imgcardbox = $talk_directly['imgcard-box']; 
-                if($imgcardbox) : ?>
-            <div class="row pb-4">
-                <?php
-                    foreach( $imgcardbox as $imgcardbox_itm ) : 
-                        $selecttitle = $imgcardbox_itm['select_or_title'];                
-                        $grouptitle = $imgcardbox_itm['select_group'];                  
-                        $title = $imgcardbox_itm['title']; 
-                        $description = $imgcardbox_itm['description'];
-                        $image = $imgcardbox_itm['image'];
-                        $action = $imgcardbox_itm['action']; 
-                    ?>
-
-                <div class="col-lg-4">
-                    <div class="cardBox">
-                        <?php if($description) : ?>
-                        <img src="<?php echo $image; ?>" alt="image">
-                        <?php endif; ?>
-
-                        <div class="sellerCard p-4">
-                            <?php if($selecttitle == "Select Group Title") : ?>
-                            <div class="consultantsSelect homeSelect">
-                                <select class="consultantsSelectinner"
-                                    onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-
-                                    <?php foreach( $grouptitle as $grouptitle_itm ) :
-                            $options= $grouptitle_itm['select_option']; ?>
-                                    <option selected value="https://relations.millipixels.in/"><?php echo $options; ?>
-                                    </option>
-                                    <?php endforeach; ?>
-                                </select>
-
-                            </div>
-                            <?php endif; ?>
-                            <?php if($selecttitle == "Title") : ?>
-                            <?php //if($title) : ?>
-                            <h4 class="text-base-100"><?php echo $title; ?></h4>
-                            <?php endif; ?>
-                            <?php if($description) : ?>
-                            <p class="m-0 py-3 font-light text-base-100"><?php echo $description; ?></p>
-                            <?php endif; ?>
-                            <?php if($action) : ?>
-                            <div data-aos="fade-up">
-                                <a href="<?php echo $action['link']; ?>" class="btnIcon btn-white btn-sm mt-4 px-3">
-                                    <?php echo $action['text']; ?><svg width="20" height="20" viewBox="0 0 20 20"
-                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10.3536 17.5245C10.1583 17.7198 9.84171 17.7198 9.64645 17.5245C9.45119 17.3293 9.45119 17.0127 9.64645 16.8174L15.779 10.6848L3.0139 10.6848C2.73776 10.6848 2.5139 10.4609 2.5139 10.1848C2.51391 9.90864 2.73776 9.68478 3.0139 9.68478H15.779L9.64645 3.55216C9.45119 3.3569 9.45119 3.04031 9.64645 2.84505C9.84171 2.64979 10.1583 2.64979 10.3536 2.84505L17.3393 9.83088L17.3396 9.83123C17.3404 9.83194 17.3411 9.83264 17.3418 9.83335C17.3887 9.8808 17.4241 9.93529 17.4482 9.99339C17.4726 10.0523 17.4861 10.117 17.4861 10.1848C17.4861 10.2526 17.4726 10.3172 17.4482 10.3762C17.4238 10.4351 17.3876 10.4904 17.3396 10.5383L10.3536 17.5245Z"
-                                            fill="white" />
-                                    </svg>
-
-                                </a>
-                            </div>
-                            <?php endif;?>
-
-                        </div>
-
-                    </div>
-                </div>
-                <?php endforeach; ?>
-
-            </div>
-            <?php endif; ?>
-        </div>
-
-        <?php endif; ?>
-
-
-
-        <?php 
-     $learn_about_property = get_field('learn_about_property');
-     if($learn_about_property) : 
-     ?>
-
-        <div class="container ">
-            <section class="mt-4">
-                <div class="row pb-5">
-                    <div class="col-lg-12">
-                        <?php if($learn_about_property["title"]) : ?>
-                        <h1 class="gradient-span"><?php echo $learn_about_property["title"]; ?></h1>
-                        <?php endif ?>
-                    </div>
-                </div>
-
-                <?php 
-                    $featured_post =  $learn_about_property["featured_post"];
-                    $id = $featured_post->ID;
-                    $slug = get_permalink($id);
-                    $title = $featured_post->post_title;
-                    $shortdec = get_field('short_dec', $id);
-                ?>
-
-                <div class="row blogSlider">
-
-                    <?php
-                            $other_post = $learn_about_property['other_post'];
-                           // print_r($other_post);
-                            foreach( $other_post as $other_postitm ) :
-                                $other_p = $other_postitm['post'];
-                                $shortdec = get_field('short_dec', $id);
-                                $id = $other_p->ID;
-                                $slug = get_permalink($id);
-                                $title = $other_p->post_title;
-                                ?>
-                    <div class="">
-                        <div class="resourcesBlogCard imgAnmi" data-aos="fade-up" data-aos-delay="<?php echo $j; ?>">
-                            <a href="<?php echo $slug; ?>">
-                                <div class="resourcesBlogCardImage">
-                                    <?php echo get_the_post_thumbnail( $id);?>
-                                </div>
-                                <div class="resourcesBlogCardContent">
-                                    <div class="h6 pb-2"><?php echo get_the_date( 'M d, Y', $id ) ?></div>
-
-                                    <h5 class="font-bold text-base-200 pb-4 small-gborder"><?php echo $title; ?></h5>
-                                    </p>
-                                </div>
-                        </div>
-                        </a>
-                    </div>
-                    <?php endforeach; ?>
-
-                </div>
-                <div class="mt-3 mt-lg-5 ">
-                    <?php if( $learn_about_property['action'] ): ?>
-                    <a href="<?php echo $learn_about_property['action']['link']; ?>"
-                        class="btnIcon btn-primary btn-sm mt-4 mt-lg-0">
-                        <?php echo $learn_about_property['action']['text']; ?>
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd"
-                                d="M10.3536 17.5245C10.1583 17.7198 9.84171 17.7198 9.64645 17.5245C9.45119 17.3293 9.45119 17.0127 9.64645 16.8174L15.779 10.6848L3.0139 10.6848C2.73776 10.6848 2.5139 10.4609 2.5139 10.1848C2.51391 9.90864 2.73776 9.68478 3.0139 9.68478H15.779L9.64645 3.55216C9.45119 3.3569 9.45119 3.04031 9.64645 2.84505C9.84171 2.64979 10.1583 2.64979 10.3536 2.84505L17.3393 9.83088L17.3396 9.83123C17.3404 9.83194 17.3411 9.83264 17.3418 9.83335C17.3887 9.8808 17.4241 9.93529 17.4482 9.99339C17.4726 10.0523 17.4861 10.117 17.4861 10.1848C17.4861 10.2526 17.4726 10.3172 17.4482 10.3762C17.4238 10.4351 17.3876 10.4904 17.3396 10.5383L10.3536 17.5245Z"
-                                fill="white" />
-                        </svg>
-
-                    </a>
-
-                    <?php endif;?>
-                </div>
-            </section>
-        </div>
-
-
-        <?php endif; ?>
-
-    </section>
-
-
-
+   
 
 </main><!-- #main -->
 

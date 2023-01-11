@@ -279,59 +279,23 @@ $(document).ready(function () {
     });
     // end leadershipMember
 
+    $(function() {
 
-
-
-    setTimeout(function () {
-        AOS.init();
-        // $('.paroller').paroller();
-        // document.getElementById('homeBannerVideo').play();
-    }, 500);
-
-
-    $('#flexSwitchCheckChecked').change(function () {
-        if ($(this).is(":checked")) {
-            $('.price-info').addClass('year_value');
-            $('.flexSwitchCheckCheckedMonth').removeClass('active');
-            $('.flexSwitchCheckCheckedYear').addClass('active');
-        } else {
-            $('.price-info').removeClass('year_value');
-            $('.flexSwitchCheckCheckedMonth').addClass('active');
-            $('.flexSwitchCheckCheckedYear').removeClass('active');
-        }
-    });
-
-    $(".flexSwitchCheckCheckedYear").on("click", function () {
-        $('.price-info').addClass('year_value');
-        $('.flexSwitchCheckCheckedMonth').removeClass('active');
-        $('.flexSwitchCheckCheckedYear').addClass('active');
-
-        $("#flexSwitchCheckChecked").prop("checked", true);
-        $('.flexSwitchCheckCheckedMonth').removeClass('active');
-        $('.flexSwitchCheckCheckedYear').addClass('active');
-    });
-    $(".flexSwitchCheckCheckedMonth").on("click", function () {
-        $('.price-info').removeClass('year_value');
-        $('.flexSwitchCheckCheckedMonth').addClass('active');
-        $('.flexSwitchCheckCheckedYear').removeClass('active');
-
-        $("#flexSwitchCheckChecked").prop("checked", false);
-        $('.flexSwitchCheckCheckedMonth').addClass('active');
-        $('.flexSwitchCheckCheckedYear').removeClass('active');
-    });
-
-
+        $('.info').first().show().animate({
+          width: '40%'
+        });
+        $('.item').hover(function() {
+          $(this).next().show().animate({
+            width: '40%'
+          }).siblings('.info').animate({
+            width: '0%'
+          }, function() {
+            $(this).hide();
+          });
+          $(this).addClass('test').siblings().removeClass('test');
+        });
+      });
 
 });
 
-// ScrollWatch
-/*
-(function() {
-    var swInstance = new ScrollWatch({
-        watchOnce: false
-    });
-
-})();
-
-*/
 // end ScrollWatch

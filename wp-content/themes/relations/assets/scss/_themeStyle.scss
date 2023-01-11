@@ -1,0 +1,29 @@
+.wraper {
+  .item {
+    width: 15%;
+    float: left;
+    background-color: #EEE;
+    height: 250px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+    cursor: pointer;
+    background-size: cover;
+    background-position: center;
+    transition: .3s ease;
+  }
+  
+  .info {
+    border-left: 1px solid #CCC;
+    float: left;
+    background-color: #DDD;
+    height: 250px;
+    width: 0;
+    display: none;
+  }
+  
+  .test {
+    width: 22%;
+    transition: .3s ease .3s;
+  }
+}
